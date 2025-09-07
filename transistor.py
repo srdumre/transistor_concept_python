@@ -159,4 +159,5 @@ if __name__ == "__main__":
     truth_table(ha, inputs=2, name="HalfAdder")
     truth_table(fa, inputs=3, name="FullAdder")
 
-        
+
+
