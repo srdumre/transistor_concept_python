@@ -1,16 +1,18 @@
 import matplotlib.pyplot as plt
 from transistor import CMOSInverter, CMOSNAND2, CMOSXOR2, HalfAdder, FullAdder  
 
-def plot_waveform(time, signals, title="CMOS Simulation"):
-    plt.figure(figsize=(10, 6))
-    for i, (name, values) in enumerate(signals.items()):
-        plt.step(time, [v/5 for v in values], where="post", label=name)  
-    plt.title(title)
-    plt.xlabel("Time (steps)")
-    plt.ylabel("Logic Level (0 / 1)")
-    plt.yticks([0, 1])
-    plt.grid(True, which="both", linestyle="--", alpha=0.6)
-    plt.legend(loc="upper right")
+def plot_waveforms_separately(time, signals):
+
+    for name, values in signals.items():
+        plt.figure(figsize=(8, 3))
+        plt.step(time, [v/5 for v in values], where="post", label=name)
+        plt.title(f"{name} Waveform")
+        plt.xlabel("Time (steps)")
+        plt.ylabel("Logic Level (0 / 1)")
+        plt.yticks([0, 1])
+        plt.grid(True, which="both", linestyle="--", alpha=0.6)
+        plt.legend(loc="upper right")
+    
     plt.show()
 
 
@@ -42,4 +44,4 @@ if __name__ == "__main__":
         "HalfAdder CARRY": carry_out
     }
 
-    plot_waveform(time, signals, "CMOS Logic Waveforms")
+    plot_waveforms_separately(time, signals)
